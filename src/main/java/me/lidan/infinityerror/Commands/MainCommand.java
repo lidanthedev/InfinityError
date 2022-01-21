@@ -1,9 +1,6 @@
 package me.lidan.infinityerror.Commands;
 
-import me.lidan.infinityerror.Abilities.BlackHole;
-import me.lidan.infinityerror.Abilities.Grab;
-import me.lidan.infinityerror.Abilities.Portal;
-import me.lidan.infinityerror.Abilities.Shield;
+import me.lidan.infinityerror.Abilities.*;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
@@ -56,6 +53,9 @@ public class MainCommand implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("black-hole")){
                 BlackHole.active(p);
+            }
+            if(args[0].equalsIgnoreCase("laser")){
+                Laser.active(p);
             }
         }
         return true;

@@ -15,7 +15,7 @@ public class Laser {
             @Override
             public void run() {
                 arrow.getWorld().spawnParticle(Particle.PORTAL, arrow.getLocation(), 10);
-                if (arrow.isOnGround()){
+                if (arrow.isOnGround() || arrow.isDead()){
                     cancel();
                 }
             }
