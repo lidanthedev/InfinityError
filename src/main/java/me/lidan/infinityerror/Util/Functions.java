@@ -13,6 +13,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -77,12 +78,12 @@ public class Functions {
         item.setItemMeta(itemMeta);
     }
 
-    public static ArrayList<Entity> loopEntities(Location center, int size) {
+    public static ArrayList<Entity> loopEntities(Location center, double size) {
         List<Entity> entities = center.getWorld().getEntities();
         ArrayList<Entity> entity = new ArrayList<>();
 
         for(Entity value : entities) {
-            if (center.distance(value.getLocation()) <= (double)size) {
+            if (center.distance(value.getLocation()) <= size) {
                 entity.add(value);
             }
         }
@@ -404,4 +405,27 @@ public class Functions {
         p.sendMessage(message);
     }
 
+    public static Entity getTargetEntity(Player player, double max, boolean stopAtBlock) {
+        Location location = player.getLocation();
+
+        for(int i = 0; (double)i < max; ++i) {
+            Location loc = location.clone().add(location.clone().getDirection().multiply(i));
+
+            for (Entity entity : loopEntities(loc, 1.5D)) {
+                if (entity instanceof Creature || (entity instanceof Player && !entity.equals(player))) {
+                    return entity;
+                }
+            }
+
+            if (loc.getBlock().getType() != Material.AIR && stopAtBlock) {
+                break;
+            }
+        }
+
+        return null;
+    }
+
+    public static Entity getTargetEntity(Player player, double max) {
+        return getTargetEntity(player, max, true);
+    }
 }

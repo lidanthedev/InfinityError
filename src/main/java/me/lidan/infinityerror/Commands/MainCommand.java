@@ -1,5 +1,9 @@
 package me.lidan.infinityerror.Commands;
 
+import me.lidan.infinityerror.Abilities.BlackHole;
+import me.lidan.infinityerror.Abilities.Grab;
+import me.lidan.infinityerror.Abilities.Portal;
+import me.lidan.infinityerror.Abilities.Shield;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
@@ -22,6 +26,9 @@ public class MainCommand implements CommandExecutor {
                 p.sendMessage("ERROR! you must put more args");
                 return false;
             }
+            if(args[0].equalsIgnoreCase("reload")){
+                p.performCommand("plugman reload InfinityError");
+            }
             if (args[0].equalsIgnoreCase("give")){
                 p.getInventory().addItem(Items.INFINITY_GAUNTLET);
                 p.getInventory().addItem(Items.SPACE_STONE);
@@ -37,6 +44,18 @@ public class MainCommand implements CommandExecutor {
                         }
                     }
                 }.runTaskTimer(Infinityerror.getInstance(),0L,1L);
+            }
+            if(args[0].equalsIgnoreCase("portal")){
+                Portal.inputLocation(p);
+            }
+            if(args[0].equalsIgnoreCase("grab")){
+                Grab.grab(p);
+            }
+            if(args[0].equalsIgnoreCase("shield")){
+                Shield.active(p);
+            }
+            if(args[0].equalsIgnoreCase("black-hole")){
+                BlackHole.active(p);
             }
         }
         return true;

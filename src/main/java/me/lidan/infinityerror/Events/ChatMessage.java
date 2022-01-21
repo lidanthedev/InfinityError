@@ -16,6 +16,7 @@ public class ChatMessage implements Listener {
     public void OnChatMessage(AsyncPlayerChatEvent e){
         Player p = e.getPlayer();
         if (players.getOrDefault(p ,0L) > 0){
+            e.setCancelled(true);
             lastinput.put(p, e.getMessage());
             players.put(p, 0L);
         }
