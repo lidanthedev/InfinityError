@@ -6,14 +6,15 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class BlackHole {
+public class Laser {
     public static void active(Player p){
         Arrow arrow = p.launchProjectile(Arrow.class);
+        arrow.addScoreboardTag("power-stone");
         new BukkitRunnable(){
 
             @Override
             public void run() {
-                arrow.getWorld().spawnParticle(Particle.CRIT_MAGIC, arrow.getLocation(), 100);
+                arrow.getWorld().spawnParticle(Particle.PORTAL, arrow.getLocation(), 10);
                 if (arrow.isOnGround()){
                     cancel();
                 }

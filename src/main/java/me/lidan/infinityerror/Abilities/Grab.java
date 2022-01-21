@@ -18,8 +18,8 @@ public class Grab {
     public static void grab(Player p){
 
         if (players.getOrDefault(p,false)){
-            p.sendMessage("stop grab");
             players.put(p,false);
+            return;
         }
 
         Entity grabbedEntity = Functions.getTargetEntity(p, 20, false);

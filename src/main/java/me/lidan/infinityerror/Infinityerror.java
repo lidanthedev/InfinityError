@@ -3,6 +3,7 @@ package me.lidan.infinityerror;
 import me.lidan.infinityerror.Abilities.Ability;
 import me.lidan.infinityerror.Commands.MainCommand;
 import me.lidan.infinityerror.Events.ChatMessage;
+import me.lidan.infinityerror.Events.OnDamage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Bukkit;
@@ -25,6 +26,7 @@ public final class Infinityerror extends JavaPlugin {
         instance = this;
         getCommand("infinity").setExecutor(new MainCommand());
         getServer().getPluginManager().registerEvents(new ChatMessage(), this);
+        getServer().getPluginManager().registerEvents(new OnDamage(), this);
     }
 
     @Override
