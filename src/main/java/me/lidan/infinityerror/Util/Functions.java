@@ -397,8 +397,9 @@ public class Functions {
         });
     }
 
-    public static void ChatInput(Player p, String message) {
+    public static void chatInput(Player p, String message) {
         ChatMessage.players.put(p, 1L);
+        ChatMessage.lastinput.put(p, "");
         p.closeInventory();
         p.sendMessage(message);
     }
