@@ -57,6 +57,12 @@ public class MainCommand implements CommandExecutor {
             if(args[0].equalsIgnoreCase("laser")){
                 Laser.active(p);
             }
+            if(args[0].equalsIgnoreCase("saveblock")){
+                SaveBlock.active(p);
+            }
+            if(args[0].equalsIgnoreCase("pasteblock")){
+                PasteBlock.active(p);
+            }
         }
         return true;
     }

@@ -71,6 +71,10 @@
             <id>dmulloy2-repo</id>
             <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -115,6 +119,13 @@
             <artifactId>annotations</artifactId>
             <version>22.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.InventivetalentDev</groupId>
+            <artifactId>GlowAPI</artifactId>
+            <version>1.4.6-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/depend/GlowAPI_v1.4.6-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

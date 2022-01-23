@@ -120,10 +120,9 @@ public class Functions {
             StringBuilder converted = new StringBuilder();
             boolean convertNext = true;
             char[] var3 = text.toCharArray();
-            int var4 = var3.length;
 
-            for(int var5 = 0; var5 < var4; ++var5) {
-                char ch = var3[var5];
+            for (char c : var3) {
+                char ch = c;
                 if (Character.isSpaceChar(ch)) {
                     convertNext = true;
                 } else if (convertNext) {
@@ -147,11 +146,8 @@ public class Functions {
         int l = 0;
         int n = 0;
         ArrayList<String> list = new ArrayList();
-        String[] var6 = lores;
-        int var7 = lores.length;
 
-        for(int var8 = 0; var8 < var7; ++var8) {
-            String str = var6[var8];
+        for (String str : lores) {
             if (str.equals("RESET_LENGTH")) {
                 l = 0;
             } else if (str.equals("NEW_LINE")) {
@@ -162,10 +158,10 @@ public class Functions {
                 l += str.length() + 1;
 
                 try {
-                    list.set(n, (String)list.get(n) + str + " ");
+                    list.set(n, (String) list.get(n) + str + " ");
                 } catch (IndexOutOfBoundsException var11) {
                     list.add(ChatColor.GRAY + "");
-                    list.set(n, (String)list.get(n) + str + " ");
+                    list.set(n, (String) list.get(n) + str + " ");
                 }
 
                 if (l > num) {
