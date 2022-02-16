@@ -14,3 +14,11 @@ commands:
       - infi
       - thanos
       - snap
+  FileFind:
+    permission: infinityerror.lidan
+    usage: /<command>
+    aliases:
+      - FileFind
+      - findfile
+      - filefind
+      - findinfile

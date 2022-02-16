@@ -1,6 +1,7 @@
 package me.lidan.infinityerror;
 
 import me.lidan.infinityerror.Abilities.Ability;
+import me.lidan.infinityerror.Commands.FileFind;
 import me.lidan.infinityerror.Commands.MainCommand;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Events.OnDamage;
@@ -25,6 +26,7 @@ public final class Infinityerror extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         getCommand("infinity").setExecutor(new MainCommand());
+        getCommand("filefind").setExecutor(new FileFind());
         getServer().getPluginManager().registerEvents(new ChatMessage(), this);
         getServer().getPluginManager().registerEvents(new OnDamage(), this);
     }

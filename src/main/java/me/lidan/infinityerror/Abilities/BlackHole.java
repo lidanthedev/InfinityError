@@ -13,6 +13,9 @@ public class BlackHole {
 
             @Override
             public void run() {
+                if (arrow.getWorld().getName().contains("world")){
+                    
+                }
                 arrow.getWorld().spawnParticle(Particle.CRIT_MAGIC, arrow.getLocation(), 100);
                 if (arrow.isOnGround() || arrow.isDead()){
                     cancel();

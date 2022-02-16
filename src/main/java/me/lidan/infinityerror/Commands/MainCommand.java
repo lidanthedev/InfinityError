@@ -5,6 +5,8 @@ import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
 import me.lidan.infinityerror.Util.Items;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainCommand implements CommandExecutor {
@@ -62,6 +65,15 @@ public class MainCommand implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("pasteblock")){
                 PasteBlock.active(p);
+            }
+            if(args[0].equalsIgnoreCase("flight")){
+                Flight.active(p);
+            }
+            if(args[0].equalsIgnoreCase("loop-error")){
+                ArrayList<Block> blocks = Functions.loopBlocksCube(p.getLocation(),5);
+                for (Block block: blocks) {
+                    p.sendBlockChange(block.getLocation(), Material.BRICK,(byte) 0);
+                }
             }
         }
         return true;
