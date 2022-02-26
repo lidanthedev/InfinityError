@@ -19,17 +19,21 @@ public class FileFind implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) return false;
-        StringBuffer sb = new StringBuffer();
-        for (String arg : args) {
-            sb.append(arg);
-        }
-        String search = sb.toString();
+//        StringBuilder sb = new StringBuilder();
+//        for (String arg : args) {
+//            sb.append(arg);
+//        }
+        String search = String.join(" ", args);;
+        searchFiles(sender, search);
+        return true;
+    }
 
+    public void searchFiles(CommandSender sender, String search) {
         final File folder = new File(plugin.getDataFolder().getParent() + "/Skript" +
                 "/scripts");
         if (!folder.exists() || !folder.isDirectory()){
             sender.sendMessage("Folder Skript not found");
-            return true;
+            return;
         }
         new BukkitRunnable() {
             @Override
@@ -37,7 +41,7 @@ public class FileFind implements CommandExecutor {
                 try {
                     int count = 0;
                     for (final File fileEntry : folder.listFiles()) {
-                        LOGGER.info("now reading file {}", fileEntry.getName());
+                        // LOGGER.info("now reading file {}", fileEntry.getName());
                         BufferedReader reader = new BufferedReader(new FileReader(fileEntry.getAbsolutePath()));
                         int lines = 0;
                         String s;
@@ -63,6 +67,5 @@ public class FileFind implements CommandExecutor {
                 }
             }
         }.runTaskAsynchronously(plugin);
-        return true;
     }
 }
