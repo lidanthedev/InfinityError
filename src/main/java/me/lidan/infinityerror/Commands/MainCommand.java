@@ -1,10 +1,12 @@
 package me.lidan.infinityerror.Commands;
 
+import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import me.lidan.infinityerror.Abilities.*;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
 import me.lidan.infinityerror.Util.Items;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -74,6 +76,10 @@ public class MainCommand implements CommandExecutor {
                 for (Block block: blocks) {
                     p.sendBlockChange(block.getLocation(), Material.BRICK,(byte) 0);
                 }
+            }
+            if(args[0].equalsIgnoreCase("oops")){
+                ChatColor.stripColor("scam");
+
             }
         }
         return true;

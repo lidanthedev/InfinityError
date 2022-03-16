@@ -19,10 +19,6 @@ public class FileFind implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) return false;
-//        StringBuilder sb = new StringBuilder();
-//        for (String arg : args) {
-//            sb.append(arg);
-//        }
         String search = String.join(" ", args);;
         searchFiles(sender, search);
         return true;
@@ -43,7 +39,7 @@ public class FileFind implements CommandExecutor {
                     for (final File fileEntry : folder.listFiles()) {
                         // LOGGER.info("now reading file {}", fileEntry.getName());
                         BufferedReader reader = new BufferedReader(new FileReader(fileEntry.getAbsolutePath()));
-                        int lines = 0;
+                        int lines = 1;
                         String s;
                         while ((s = reader.readLine()) != null) {
                             if (s.contains(search)) {

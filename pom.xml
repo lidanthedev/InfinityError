@@ -75,6 +75,10 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>puha-repo</id>
+            <url>https://repo.puha.io/repo/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -117,7 +121,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>22.0.0</version>
+            <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -126,6 +130,11 @@
             <version>1.4.6-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${basedir}/depend/GlowAPI_v1.4.6-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>io.puharesource.mc</groupId>
+            <artifactId>TitleManager</artifactId>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 </project>
