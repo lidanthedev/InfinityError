@@ -6,7 +6,9 @@ import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
 import me.lidan.infinityerror.Util.Items;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -77,9 +79,15 @@ public class MainCommand implements CommandExecutor {
                     p.sendBlockChange(block.getLocation(), Material.BRICK,(byte) 0);
                 }
             }
-            if(args[0].equalsIgnoreCase("oops")){
-                ChatColor.stripColor("scam");
-
+            if(args.length >= 2 && args[0].equalsIgnoreCase("look-at")){
+                Player arg_player = Bukkit.getPlayer(args[1]);
+                Location playerLoc = p.getLocation();
+                Location entityLoc = arg_player.getLocation();
+                float yaw = (float) Math.toDegrees(Math.atan2(
+                        playerLoc.getZ() - entityLoc.getZ(), playerLoc.getX() - entityLoc.getX())) - 90;
+                Location loc = arg_player.getLocation();
+                loc.setYaw(yaw);
+                arg_player.teleport(loc);
             }
         }
         return true;

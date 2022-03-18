@@ -421,6 +421,21 @@ public class Functions {
         return null;
     }
 
+    public static Location faceLocation(Entity entity, Location to) {
+        if (entity.getWorld() != to.getWorld()) {
+            return null;
+        }
+        Location loc = entity.getLocation();
+        float yaw = (float) Math.toDegrees(Math.atan2(
+                to.getZ() - loc.getZ(), to.getX() - loc.getX())) - 90;
+        loc.setYaw(yaw);
+        return loc;
+    }
+
+    public static void faceLocationWithTeleport(Entity entity, Location to){
+        entity.teleport(faceLocation(entity, to));
+    }
+
     public static Entity getTargetEntity(Player player, double max) {
         return getTargetEntity(player, max, true);
     }
