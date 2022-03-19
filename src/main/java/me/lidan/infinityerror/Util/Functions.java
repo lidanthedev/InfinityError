@@ -26,7 +26,6 @@ import org.bukkit.util.Vector;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
@@ -396,7 +395,7 @@ public class Functions {
 
     public static void chatInput(Player p, String message) {
         ChatMessage.players.put(p, 1L);
-        ChatMessage.lastinput.put(p, "");
+        ChatMessage.lastInput.put(p, "");
         p.closeInventory();
         p.sendMessage(message);
     }

@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 
 public class FileFind implements CommandExecutor {
     public JavaPlugin plugin = Infinityerror.getInstance();
+    public FileConfiguration config = Infinityerror.getInstance().getConfig();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -43,8 +45,7 @@ public class FileFind implements CommandExecutor {
             search = search.replace(String.format(" %s", folderPath), "");
         }
         else {
-            folderPath = plugin.getDataFolder().getParent() + "/Skript" +
-                    "/scripts";
+            folderPath = config.getString("Find_file_default_path");
         }
         if (search.contains(" --lower")){ // Lower flag
             search = search.replace(" --lower","");
@@ -73,8 +74,8 @@ public class FileFind implements CommandExecutor {
             public void run() {
 
                 try {
-                    Logger logger = Logger.getLogger("FileFindLog");
-                    FileHandler fh = new FileHandler("");
+                    /*Logger logger = Logger.getLogger("FileFindLog");
+                    FileHandler fh = new FileHandler("");*/
                     sender.sendMessage(String.format("[FileFind] Searching for %s in folder %s", finalSearch, folder.getPath()));
                     int count = 0;
                     File[] files = folder.listFiles();

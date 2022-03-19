@@ -29,6 +29,9 @@ public final class Infinityerror extends JavaPlugin {
         getCommand("filefind").setExecutor(new FileFind());
         getServer().getPluginManager().registerEvents(new ChatMessage(), this);
         getServer().getPluginManager().registerEvents(new OnDamage(), this);
+
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
     }
 
     @Override

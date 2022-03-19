@@ -1,13 +1,11 @@
 package me.lidan.infinityerror.Commands;
 
-import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import me.lidan.infinityerror.Abilities.*;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import me.lidan.infinityerror.Util.Functions;
 import me.lidan.infinityerror.Util.Items;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,7 +13,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -42,8 +39,8 @@ public class MainCommand implements CommandExecutor {
                 new BukkitRunnable(){
                     @Override
                     public void run() {
-                        if (!Objects.equals(ChatMessage.lastinput.get(p), "")) {
-                            p.sendMessage("You Entered " + ChatMessage.lastinput.get(p));
+                        if (!Objects.equals(ChatMessage.lastInput.get(p), "")) {
+                            p.sendMessage("You Entered " + ChatMessage.lastInput.get(p));
                             cancel();
                         }
                     }

@@ -42,9 +42,9 @@ public class Portal {
                     p.teleport(tpLoc);
                     p.sendMessage(ChatColor.BLUE + "Teleported!");
                 }
-                if (!Objects.equals(ChatMessage.lastinput.get(p), "")) {
+                if (!Objects.equals(ChatMessage.lastInput.get(p), "")) {
                     phase++;
-                    input = ChatMessage.lastinput.get(p);
+                    input = ChatMessage.lastInput.get(p);
                 }
                 if (phase == 8){
                     cancel();
