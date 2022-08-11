@@ -4,9 +4,6 @@ import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.PacketContainer;
-import de.tr7zw.nbtapi.NBTCompound;
-import de.tr7zw.nbtapi.NBTItem;
-import de.tr7zw.nbtapi.NBTListCompound;
 import me.lidan.infinityerror.Events.ChatMessage;
 import me.lidan.infinityerror.Infinityerror;
 import net.md_5.bungee.api.ChatMessageType;
@@ -37,20 +34,20 @@ public class Functions {
         item.setItemMeta(itemMeta);
 
     }
-    public static ItemStack getSkull(ItemStack itemStack, String id, String value) {
-        ItemStack item = new ItemStack(itemStack.getType(), itemStack.getAmount(), (short)3);
-        item.setItemMeta(itemStack.getItemMeta());
-        if (!value.isEmpty()) {
-            NBTItem nbt = new NBTItem(item);
-            NBTCompound skull = nbt.addCompound("SkullOwner");
-            skull.setString("Id", id);
-            NBTListCompound texture = skull.addCompound("Properties").getCompoundList("textures").addCompound();
-            texture.setString("Value", value);
-            nbt.applyNBT(item);
-        }
-        return item;
-
-    }
+//    public static ItemStack getSkull(ItemStack itemStack, String id, String value) {
+//        ItemStack item = new ItemStack(itemStack.getType(), itemStack.getAmount(), (short)3);
+//        item.setItemMeta(itemStack.getItemMeta());
+//        if (!value.isEmpty()) {
+//            NBTItem nbt = new NBTItem(item);
+//            NBTCompound skull = nbt.addCompound("SkullOwner");
+//            skull.setString("Id", id);
+//            NBTListCompound texture = skull.addCompound("Properties").getCompoundList("textures").addCompound();
+//            texture.setString("Value", value);
+//            nbt.applyNBT(item);
+//        }
+//        return item;
+//
+//    }
 
     public static void sendActionBar(Player player, String message) {
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));

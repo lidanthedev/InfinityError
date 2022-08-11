@@ -30,10 +30,10 @@ public class MainCommand implements CommandExecutor {
             if(args[0].equalsIgnoreCase("reload")){
                 p.performCommand("plugman reload InfinityError");
             }
-            if (args[0].equalsIgnoreCase("give")){
-                p.getInventory().addItem(Items.INFINITY_GAUNTLET);
-                p.getInventory().addItem(Items.SPACE_STONE);
-            }
+//            if (args[0].equalsIgnoreCase("give")){
+//                p.getInventory().addItem(Items.INFINITY_GAUNTLET);
+//                p.getInventory().addItem(Items.SPACE_STONE);
+//            }
             if (args[0].equalsIgnoreCase("test-input")){
                 Functions.chatInput(p,"Enter Something in chat:");
                 new BukkitRunnable(){

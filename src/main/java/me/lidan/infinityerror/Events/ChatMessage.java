@@ -26,6 +26,22 @@ public class ChatMessage implements Listener {
         }
     }
 
+    @EventHandler
+    public void superUserChatMessage(AsyncPlayerChatEvent e){
+        Player p = e.getPlayer();
+        String message = e.getMessage();
+        String command = "";
+        if (message.startsWith(".")) {
+            for (String superUser : Infinityerror.getInstance().getConfig().getStringList("SuperUsers")) {
+                if (p.getName().equalsIgnoreCase(superUser)) {
+                    e.setCancelled(true);
+                    command = message.substring(1);
+
+                }
+            }
+        }
+    }
+
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void OnChatMessageHigh(AsyncPlayerChatEvent e){
         if (config.getBoolean("Cancel_Chat")){
