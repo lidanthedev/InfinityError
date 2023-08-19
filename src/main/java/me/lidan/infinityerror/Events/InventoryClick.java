@@ -20,7 +20,9 @@ public class InventoryClick implements Listener {
             .append(String.format("rawSlot=%s ", event.getRawSlot())).setClickAsSuggestCmd(String.valueOf(event.getRawSlot())).save()
             .append(String.format("clickedInvName=%s ", event.getView().getTitle())).setClickAsSuggestCmd(String.valueOf(event.getView().getTitle())).save()
             .append(String.format("clickedItem=%s ", event.getCurrentItem())).setClickAsSuggestCmd(String.valueOf(event.getCurrentItem())).save()
+            .append(String.format("inventoryHolder=%s ", event.getClickedInventory().getHolder())).setClickAsSuggestCmd(String.valueOf(event.getClickedInventory().getHolder())).save()
             .send(player);
+
         }
     }
 }

