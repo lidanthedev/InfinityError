@@ -1,0 +1,27 @@
+name: InfinityError
+version: '${project.version}'
+main: me.lidan.infinityerror.Infinityerror
+authors: [ LidanTheGamer ]
+description: Infinity ERROR? Yes this is an attempt to recreate the infinity craft mod as a plugin
+commands:
+  Infinity:
+    permission: infinityerror.lidan
+    usage: /<command>
+    aliases:
+      - infinityerror
+      - infi
+      - thanos
+      - snap
+  FileFind:
+    permission: infinityerror.lidan
+    usage: /<command>
+    aliases:
+      - FileFind
+      - findfile
+      - filefind
+      - findinfile
+  infoclick:
+    permission: infinityerror.infoclick
+    usage: /<command>
+    aliases:
+      - clickinfo

@@ -52,9 +52,6 @@ public class MainCommand implements CommandExecutor {
             if(args[0].equalsIgnoreCase("grab")){
                 Grab.grab(p);
             }
-            if(args[0].equalsIgnoreCase("shield")){
-                Shield.active(p);
-            }
             if(args[0].equalsIgnoreCase("black-hole")){
                 BlackHole.active(p);
             }
