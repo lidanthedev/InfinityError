@@ -28,7 +28,7 @@ public class ChatMessage implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void superUserChatMessage(AsyncPlayerChatEvent e){
         Player p = e.getPlayer();
         String message = e.getMessage();
